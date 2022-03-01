@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 @Entity
 public class Account {
 
@@ -52,6 +54,10 @@ public class Account {
 
     public void encodePassword() {
         this.password = "{noop}" + this.password;
+    }
+
+    public void encodePassword(PasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(this.password);
     }
     
 
