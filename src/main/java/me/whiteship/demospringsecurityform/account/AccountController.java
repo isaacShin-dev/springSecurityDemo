@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AccountController {
     
-    @Autowired AccountRepository accountRepository;
+    @Autowired AccountService service;
 
     @GetMapping("/account/{role}/{username}/{password}")
     public Account createAccount(@ModelAttribute Account account){
-        return accountRepository.save(account);
+       return service.createAccount(account);
+
     }
 
 
